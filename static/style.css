@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+
+    margin-left: 25px;
+
+    font-size: 16px;
+}
+
+.hero {
+    min-height: 500px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px;
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    line-height: 1.6;
+
+    margin-bottom: 30px;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    background: #222;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+}
+
+.features {
+    padding: 70px 60px;
+
+    text-align: center;
+
+    background: white;
+}
+
+.features h2 {
+    font-size: 32px;
+
+    margin-bottom: 40px;
+}
+
+.feature-container {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    width: 250px;
+
+    padding: 30px;
+
+    background: #f5f7fb;
+
+    border-radius: 12px;
+
+    text-align: left;
+}
+
+.feature-card h3 {
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    line-height: 1.5;
+}
+
+
+/* About */
+
+.about {
+    padding: 70px 60px;
+
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 32px;
+
+    margin-bottom: 20px;
+}
+
+.about p {
+    max-width: 700px;
+
+    margin: auto;
+
+    line-height: 1.7;
+}
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+
+    padding: 25px;
+
+    background: #222;
+
+    color: white;
+}
+
+.upload-page {
+    min-height: 500px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px;
+}
+
+.upload-page h1 {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.upload-page p {
+    margin-bottom: 30px;
+
+    font-size: 18px;
+}
+
+.upload-page input {
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career & Resume Assistant</title>
+    <link rel="stylesheet" href="{ { url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">AI Career & Resume Assistant</div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+    <main>
+
+        <section class="hero">
+            <div class="hero-content">
+
+            <h1>Build Your Career with AI</h1>
+
+            <p>
+                Upload your resume and get personalized career guidance,
+                skill-gap analysis, and interview preparation.
+            </p>
+
+            <a href="/upload" class="button">Upload Your Resume</a>
+        </div>
+
+        </section>
+
+        <section id="features" class="features">
+
+             <h2>What Our AI Assistant Can Do</h2>
+
+            <div class="feature-container">
+
+            <div class="feature-card">
+                <h3>📄 Resume Analysis</h3>
+                <p>
+                    Analyze your resume and identify your important skills.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🎯 Skill Gap Analysis</h3>
+                <p>
+                    Discover which skills you need for your target career.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🤖 AI Interview</h3>
+                <p>
+                    Prepare for interviews with AI-generated questions.
+                </p>
+            </div>
+            </div>    
+        </section>
+        <section id="about" class="about">
+
+            <h2>About the Project</h2>
+
+            <p>
+                AI Career & Resume Assistant is a final-year
+                B.Tech project designed to help students make
+                better use of their skills and prepare for
+                career opportunities.
+            </p>
+
+        </section>
+        <section class="upload-section">
+
+    <h2>Analyze Your Resume</h2>
+
+    <p>
+        Upload your resume in PDF format to start your career analysis.
+    </p>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+        <input
+            type="file"
+            name="resume"
+            accept=".pdf"
+            required
+        >
+
+        <button type="submit" class="btn">
+            Upload Resume
+        </button>
+
+    </form>
+
+</section>
+    </main>
+    <footer>
+        <p>AI Career & Resume Assistant | B.Tech Major Project</p>
+    </footer>
+</body>
+</html>
