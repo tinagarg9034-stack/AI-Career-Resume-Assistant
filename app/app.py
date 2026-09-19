@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import os
 
+from pdf_parser import extract_text_from_pdf
+
 app = Flask(
     __name__,
     template_folder="../templates",
@@ -42,7 +44,19 @@ def upload_resume():
 
         file.save(file_path)
 
-        return f"Resume uploaded successfully: {file.filename}"
+        extracted_text = extract_text_from_pdf(file_path)
+
+        return f"""
+        <h1>Resume Uploaded Successfully!</h1>
+
+        <h2>Extracted Resume Text:</h2>
+
+        <pre>{extracted_text}</pre>
+
+        <br>
+
+        <a href="/">Back to Home</a>
+        """
 
     return render_template("upload.html")
 
