@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import os
 
 from pdf_parser import extract_text_from_pdf
+from skill_extractor import extract_skills
 
 app = Flask(
     __name__,
@@ -46,10 +47,24 @@ def upload_resume():
 
         extracted_text = extract_text_from_pdf(file_path)
 
-        return f"""
-        <h1>Resume Uploaded Successfully!</h1>
+        detected_skills=extract_skills(extracted_text)
 
-        <h2>Extracted Resume Text:</h2>
+        skills_html = ""
+
+        for skill in detected_skills:
+            skills_html += f"<li>{skill}</li>"
+
+
+        return f"""
+        <h1>Resume Analysis</h1>
+
+        <h2>Detected Skills</h2>
+
+        <ul>
+    {skills_html}
+        </ul>
+
+        <h2>Extracted Resume Text</h2>
 
         <pre>{extracted_text}</pre>
 
