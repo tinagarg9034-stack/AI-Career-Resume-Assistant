@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Analysis</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>AI Career Analysis</h1>
+
+        <div class="card">
+
+            <h2>Target Role</h2>
+
+            <p class="role">
+                {{ job_role }}
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>Career Match</h2>
+
+            <div class="percentage">
+                {{ match_percentage }}%
+            </div>
+
+            <p>
+                Your resume matches the selected career based on
+                the skills detected in your resume.
+            </p>
+
+        </div>
+
+
+        <div class="skills-container">
+
+            <div class="card">
+
+                <h2>✓ Matched Skills</h2>
+
+                {% if matched_skills %}
+
+                <ul>
+
+                    {% for skill in matched_skills %}
+
+                    <li class="matched">
+                        ✓ {{ skill }}
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+
+                {% else %}
+
+                <p>No matching skills detected.</p>
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>✗ Missing Skills</h2>
+
+                {% if missing_skills %}
+
+                <ul>
+
+                    {% for skill in missing_skills %}
+
+                    <li class="missing">
+                        ✗ {{ skill }}
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+
+                {% else %}
+
+                <p>No missing skills detected.</p>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>Next Step</h2>
+
+            <p>
+                Learn the missing skills to improve your preparation
+                for the selected career.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+    <h2>📚 Personalized Career Roadmap</h2>
+
+    {% if roadmap %}
+
+        {% for item in roadmap %}
+
+        <div class="roadmap-item">
+
+            <h3>
+                Week {{ item.week }} — {{ item.skill }}
+            </h3>
+
+            <p>
+                <strong>Priority:</strong>
+                {{ item.priority }}
+            </p>
+
+            <h4>What to Learn</h4>
+
+            <ul>
+                {% for topic in item.topics %}
+                    <li>{{ topic }}</li>
+                {% endfor %}
+            </ul>
+
+            <h4>🎯 Mini Project</h4>
+
+            <p>
+                {{ item.project }}
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>
+            🎉 No major skill gaps detected!
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+        <a href="/upload" class="btn">
+            Analyze Another Resume
+        </a>
+
+    </div>
+
+</body>
+
+</html>

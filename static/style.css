@@ -118,9 +118,6 @@ nav a {
     line-height: 1.5;
 }
 
-
-/* About */
-
 .about {
     padding: 70px 60px;
 
@@ -140,9 +137,6 @@ nav a {
 
     line-height: 1.7;
 }
-
-
-/* Footer */
 
 footer {
     text-align: center;
@@ -188,4 +182,95 @@ footer {
     border: 1px solid #ccc;
 
     border-radius: 6px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.role {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.percentage {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+li {
+    list-style: none;
+    padding: 8px;
+    margin: 5px 0;
+}
+
+.matched {
+    color: green;
+}
+
+.missing {
+    color: red;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+}
+.roadmap-item {
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.roadmap-item h3 {
+    margin-bottom: 8px;
+}
+
+.roadmap-item p {
+    margin: 0;
+}
+
+.roadmap-item {
+    padding: 20px;
+    margin: 20px 0;
+    border-left: 5px solid;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.roadmap-item h3 {
+    margin-bottom: 12px;
+}
+
+.roadmap-item h4 {
+    margin-top: 15px;
+}
+
+.roadmap-item ul {
+    padding-left: 25px;
+}
+
+.roadmap-item li {
+    margin: 6px 0;
 }

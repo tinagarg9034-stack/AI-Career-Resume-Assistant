@@ -1,8 +1,15 @@
 from flask import Flask, render_template, request
 import os
+import sys
+
+BASE_DIR =os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0,BASE_DIR)
+from data.job_roles import JOB_ROLES
 
 from pdf_parser import extract_text_from_pdf
 from skill_extractor import extract_skills
+from career_matcher import calculate_match
+from career_roadmap import generate_roadmap
 
 app = Flask(
     __name__,
@@ -29,6 +36,7 @@ def upload_resume():
             return "No resume selected."
 
         file = request.files["resume"]
+        job_role = request.form.get("job_role")
 
         if file.filename == "":
             return "No resume selected."
@@ -48,30 +56,35 @@ def upload_resume():
         extracted_text = extract_text_from_pdf(file_path)
 
         detected_skills=extract_skills(extracted_text)
+        required_skills = JOB_ROLES.get(job_role, [])
 
-        skills_html = ""
+        matched_skills, missing_skills, match_percentage = calculate_match(
+            detected_skills,
+            required_skills
+        )
 
-        for skill in detected_skills:
-            skills_html += f"<li>{skill}</li>"
+        roadmap=generate_roadmap(missing_skills)
+
+        matched_html = ""
+
+        for skill in matched_skills:
+            matched_html += f"<li>✓ {skill}</li>"
 
 
-        return f"""
-        <h1>Resume Analysis</h1>
+        missing_html = ""
 
-        <h2>Detected Skills</h2>
+        for skill in missing_skills:
+            missing_html += f"<li>✗ {skill}</li>"
 
-        <ul>
-    {skills_html}
-        </ul>
 
-        <h2>Extracted Resume Text</h2>
-
-        <pre>{extracted_text}</pre>
-
-        <br>
-
-        <a href="/">Back to Home</a>
-        """
+        return render_template(
+        "result.html",
+        job_role=job_role,
+        match_percentage=match_percentage,
+        matched_skills=matched_skills,
+        missing_skills=missing_skills,
+        roadmap=roadmap
+    )
 
     return render_template("upload.html")
 
