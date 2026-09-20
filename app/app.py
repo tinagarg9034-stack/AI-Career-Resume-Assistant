@@ -10,6 +10,7 @@ from pdf_parser import extract_text_from_pdf
 from skill_extractor import extract_skills
 from career_matcher import calculate_match
 from career_roadmap import generate_roadmap
+from career_advisor import generate_advice
 
 app = Flask(
     __name__,
@@ -62,6 +63,12 @@ def upload_resume():
             detected_skills,
             required_skills
         )
+        advice=generate_advice(
+                job_role,
+                matched_skills,
+                missing_skills
+            )
+        
 
         roadmap=generate_roadmap(missing_skills)
 
@@ -83,7 +90,8 @@ def upload_resume():
         match_percentage=match_percentage,
         matched_skills=matched_skills,
         missing_skills=missing_skills,
-        roadmap=roadmap
+        roadmap=roadmap,
+        advice=advice
     )
 
     return render_template("upload.html")
